@@ -6,14 +6,14 @@ Welcome to my personal portfolio website repository! This site showcases my proj
 
 ## 🌐 Live Demo
 
-**View the live website here:** 
+**View the live website here:** kokkondamanoj.vercel.app
 
 ---
 
 ## 📁 Project Structure
 
 /
-├── portfolio.html              # Main webpage  
+├── index.html              # Main webpage  
 ├── images/                 # Folder for all images used  
 │   ├── BridgingBrands.png  
 │   ├── dataviz.png  
@@ -28,7 +28,7 @@ Welcome to my personal portfolio website repository! This site showcases my proj
 - **HTML5**
 - **CSS3**
 - **JavaScript**
--  for hosting
+-  for hosting vercel app
 
 ---
 
@@ -38,7 +38,7 @@ Welcome to my personal portfolio website repository! This site showcases my proj
 - Project showcase  
 - Downloadable resume  
 - Clean and modern layout  
-- Hosted on GitHub Pages  
+- Hosted on vercel app  
 
 ---
 
@@ -47,6 +47,6 @@ Welcome to my personal portfolio website repository! This site showcases my proj
 1. Clone the repo:
    git clone https://github.com/Manoj123098/portfolio.git
 
-2. Open `portfolio.html` in your browser:
-   open portfolio.html
+2. Open `index.html` in your browser:
+   open index.html
 
