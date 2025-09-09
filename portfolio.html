@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOKKONDA MANOJ KUMAR | Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #e5e7eb; /* A light gray for body text */
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background-image: linear-gradient(to right, #3b82f6, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(10, 10, 20, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .glow-border {
+             box-shadow: 0 0 15px rgba(168, 85, 247, 0.3), 0 0 5px rgba(59, 130, 246, 0.2);
+        }
+        
+        .social-icon-link {
+            transition: transform 0.3s ease;
+        }
+        .social-icon-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            bottom: 1rem;
+            width: 2px;
+            background-color: rgba(168, 85, 247, 0.3);
+        }
+
+        .timeline-item-dot {
+            position: absolute;
+            left: -0.25rem;
+            transform: translateX(-50%);
+            top: 1.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background-color: #a855f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #000;
+        }
+        
+        /* Hide the default system cursor */
+        body, a, button {
+            cursor: none;
+        }
+
+        /* Custom Cursor Styles */
+        #cursor-dot, #cursor-follower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: 9999;
+        }
+
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #a855f7;
+            transform: translate(-50%, -50%);
+        }
+
+        #cursor-follower {
+            width: 30px; /* Made smaller */
+            height: 30px; /* Made smaller */
+            background-color: rgba(168, 85, 247, 0.1); /* Softer background */
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smoother, bouncier follow */
+            animation: glitter 2s infinite ease-in-out; /* Added glittering animation */
+        }
+        
+        /* Keyframe animation for the glittering effect */
+        @keyframes glitter {
+            0%, 100% {
+                box-shadow: 0 0 15px 3px rgba(168, 85, 247, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 20px 5px rgba(168, 85, 247, 0.4);
+            }
+        }
+
+        /* Custom scrollbar for a more modern look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a855f7;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6;
+        }
+    </style>
+</head>
+<body class="leading-relaxed antialiased selection:bg-purple-500 selection:text-white">
+
+    <!-- Custom Cursor Elements -->
+    <div id="cursor-follower"></div>
+    <div id="cursor-dot"></div>
+
+    <!-- Header -->
+    <header class="fixed top-4 left-0 right-0 z-50 px-4">
+        <div class="container mx-auto">
+            <div class="glass-card rounded-full border border-purple-500/30 px-6 py-3 flex justify-between items-center shadow-lg shadow-purple-900/20">
+                <a href="#" class="text-xl font-bold gradient-text">Manoj Kumar</a>
+                <nav class="hidden md:flex items-center space-x-6 text-sm">
+                    <a href="#home" class="transition-colors hover:text-blue-400 text-gray-300">Home</a>
+                    <a href="#about" class="transition-colors hover:text-blue-400 text-gray-300">About</a>
+                    <a href="#skills" class="transition-colors hover:text-blue-400 text-gray-300">Skills</a>
+                    <a href="#projects" class="transition-colors hover:text-blue-400 text-gray-300">Projects</a>
+                    <a href="#experience" class="transition-colors hover:text-blue-400 text-gray-300">Experience</a>
+                    <a href="#contact" class="transition-colors hover:text-blue-400 text-gray-300">Contact</a>
+                </nav>
+                <a href="Manoj_SoftwareDevelopment.pdf" download class="hidden md:inline-flex items-center justify-center gap-2 text-sm font-medium bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-full h-9 px-4">
+                    <i data-lucide="download" class="w-4 h-4"></i> Resume
+                </a>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+         <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-2 glass-card rounded-xl p-4">
+            <a href="#home" class="block py-2 text-center hover:text-blue-400">Home</a>
+            <a href="#about" class="block py-2 text-center hover:text-blue-400">About</a>
+            <a href="#skills" class="block py-2 text-center hover:text-blue-400">Skills</a>
+            <a href="#projects" class="block py-2 text-center hover:text-blue-400">Projects</a>
+            <a href="#experience" class="block py-2 text-center hover:text-blue-400">Experience</a>
+            <a href="#contact" class="block py-2 text-center hover:text-blue-400">Contact</a>
+            <a href="Manoj_SoftwareDevelopment.pdf" download class="block mt-2 text-center py-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">Resume</a>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen flex items-center">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+                    <div class="md:w-3/5 space-y-5 text-center md:text-left" data-aos="fade-right">
+                        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">Hi, I'm <span class="gradient-text">Kokkonda Manoj Kumar</span></h1>
+                        <h2 class="text-2xl md:text-4xl font-medium text-gray-300">Software Engineer | Cloud Developer</h2>
+                        <p class="text-lg text-gray-400 max-w-xl mx-auto md:mx-0">
+                            A passionate IT student with a 9.33 CGPA, skilled in full-stack development and cloud computing. I build innovative and scalable solutions with modern technologies.
+                        </p>
+                        <div class="flex justify-center md:justify-start gap-8 pt-6">
+                            <!-- LinkedIn -->
+                            <a href="https://linkedin.com/in/manoj-vjit" target="_blank" class="social-icon-link flex flex-col items-center gap-2 w-16">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-600 to-blue-400 p-0.5 shadow-lg shadow-blue-500/40 hover:shadow-blue-500/70">
+                                    <div class="w-full h-full rounded-full bg-black/80 flex items-center justify-center">
+                                        <i data-lucide="linkedin" class="w-7 h-7 text-blue-400"></i>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-medium text-blue-400">LinkedIn</span>
+                            </a>
+                            <!-- GitHub -->
+                            <a href="https://github.com/Manoj123098" target="_blank" class="social-icon-link flex flex-col items-center gap-2 w-16">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-purple-400 p-0.5 shadow-lg shadow-purple-500/40 hover:shadow-purple-500/70">
+                                    <div class="w-full h-full rounded-full bg-black/80 flex items-center justify-center">
+                                        <i data-lucide="github" class="w-7 h-7 text-purple-400"></i>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-medium text-purple-400">GitHub</span>
+                            </a>
+                            <!-- Email -->
+                            <a href="mailto:manojkokkonda@gmail.com" class="social-icon-link flex flex-col items-center gap-2 w-16">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-600 to-pink-400 p-0.5 shadow-lg shadow-pink-500/40 hover:shadow-pink-500/70">
+                                    <div class="w-full h-full rounded-full bg-black/80 flex items-center justify-center">
+                                        <i data-lucide="mail" class="w-7 h-7 text-pink-400"></i>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-medium text-pink-400">Email</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative w-72 h-72 md:w-96 md:h-96 transform translate-x-4 md:translate-x-6" data-aos="fade-left">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-600/30 blur-2xl opacity-50 animate-pulse -z-10"></div>
+                            <div class="relative w-full h-full overflow-hidden rounded-full border-2 border-purple-500/30 shadow-2xl shadow-purple-500/20">
+                                <img src="saved.png" alt="KOKKONDA MANOJ KUMAR" class="object-cover w-full h-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+             <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold mb-10 text-center gradient-text">About Me</h2>
+                    <div class="space-y-6 text-lg text-gray-300 text-center">
+                        <p>
+                           Hello! I'm an ambitious Information Technology student from Vidya Jyothi Institute of Technology, driven by a passion for creating elegant solutions to complex problems. My journey in tech is fueled by a desire to build things that are not only functional but also scalable and efficient.
+                        </p>
+                        <p>
+                           With hands-on internship experience at <span class="font-semibold text-purple-400">PWC</span> and <span class="font-semibold text-blue-400">Salesforce (Smartbridge)</span>, I've developed a solid foundation in cloud infrastructure, workflow automation, and enterprise-level software practices. I am a collaborative team player, always eager to learn and contribute, a spirit I embraced as a participant in the <span class="font-semibold gradient-text">Smart India Hackathon (SIH) 2024</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I Do & Personal Traits Section -->
+        <section class="py-20 -mt-20">
+             <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8" data-aos="fade-up">
+                    <!-- What I Do Card -->
+                    <div class="glass-card p-8 rounded-2xl glow-border">
+                        <h3 class="text-2xl font-bold mb-6 text-blue-400">What I Do</h3>
+                        <ul class="space-y-4 text-gray-300 text-lg">
+                            <li class="flex items-start"><span class="mr-3 text-blue-400 mt-1 shrink-0">▹</span>Full-Stack Web Development</li>
+                            <li class="flex items-start"><span class="mr-3 text-blue-400 mt-1 shrink-0">▹</span>Problem Solving & Algorithms</li>
+                            <li class="flex items-start"><span class="mr-3 text-blue-400 mt-1 shrink-0">▹</span>Cloud Architecting</li>
+                            <li class="flex items-start"><span class="mr-3 text-blue-400 mt-1 shrink-0">▹</span>Database Management</li>
+                        </ul>
+                    </div>
+                    <!-- Personal Traits Card -->
+                    <div class="glass-card p-8 rounded-2xl glow-border">
+                        <h3 class="text-2xl font-bold mb-6 text-blue-400">Personal Traits</h3>
+                        <ul class="space-y-4 text-gray-300 text-lg">
+                            <li class="flex items-start"><span class="mr-3 text-blue-400 mt-1 shrink-0">▹</span>Analytical Thinker</li>
+                            <li class="flex items-start"><span class="mr-3 text-blue-400 mt-1 shrink-0">▹</span>Quick Learner</li>
+                            <li class="flex items-start"><span class="mr-3 text-blue-400 mt-1 shrink-0">▹</span>Team Collaborator</li>
+                            <li class="flex items-start"><span class="mr-3 text-blue-400 mt-1 shrink-0">▹</span>Detail-Oriented</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text" data-aos="fade-up">Technical Skills</h2>
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Languages -->
+                    <div class="glass-card p-6 rounded-xl glow-border" data-aos="fade-up">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-400">Languages</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>Python</li>
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>Java</li>
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>JavaScript</li>
+                             <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>C</li>
+                        </ul>
+                    </div>
+                    <!-- Frontend -->
+                    <div class="glass-card p-6 rounded-xl glow-border" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-400">Frontend</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>React</li>
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>HTML</li>
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>CSS</li>
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>BootStrap</li>
+                        </ul>
+                    </div>
+                    <!-- Backend & DB -->
+                    <div class="glass-card p-6 rounded-xl glow-border" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-400">Backend & Databases</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>Node.js</li>
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>Flask</li>
+                             <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>MySQL</li>
+                             <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>Firebase</li>
+                        </ul>
+                    </div>
+                    <!-- Cloud & Platforms -->
+                    <div class="glass-card p-6 rounded-xl glow-border" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-xl font-semibold mb-4 text-blue-400">Cloud & Platforms</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>AWS Services</li>
+                            <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>Salesforce</li>
+                             <li class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 mr-2 text-purple-400"></i>Git & GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text" data-aos="fade-up">Featured Projects</h2>
+                <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-10">
+                    <!-- Project 1 -->
+                    <div class="group relative overflow-hidden rounded-xl glass-card glow-border" data-aos="fade-up">
+                        <img src="BridgingBrands.png" alt="Bridging Brands and Creators Using AI" class="object-cover w-full h-64 transition-transform duration-500 group-hover:scale-110">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-blue-400">Bridging Brands and Creators Using AI</h3>
+                            <p class="mt-2 text-gray-400">A full-stack platform connecting influencers with brands, featuring role-based authentication and an AI chatbot for support.</p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-semibold text-blue-300">Vue.js</span>
+                                <span class="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-semibold text-blue-300">Flask</span>
+                                <span class="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-semibold text-blue-300">Gemini API</span>
+                                <span class="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-semibold text-blue-300">SQL</span>
+                            </div>
+                            <div class="mt-6">
+                                <a href="https://github.com/Manoj123098" target="_blank" class="inline-flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300">
+                                    View on GitHub <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="group relative overflow-hidden rounded-xl glass-card glow-border" data-aos="fade-up" data-aos-delay="100">
+                        <img src="dataviz.png" alt="Data Visualization on the Modern Web" class="object-cover w-full h-64 transition-transform duration-500 group-hover:scale-110">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-blue-400">Data Visualization - Representing Information on Modern Web</h3>
+                            <p class="mt-2 text-gray-400">An interactive web app for dynamic visualization of large datasets using D3.js, Pandas, and Firebase for personalized analytics.</p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-semibold text-blue-300">D3.js</span>
+                                <span class="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-semibold text-blue-300">Python</span>
+                                <span class="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-semibold text-blue-300">Pandas</span>
+                                <span class="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-semibold text-blue-300">Firebase</span>
+                            </div>
+                             <div class="mt-6">
+                                <a href="https://github.com/Manoj123098" target="_blank" class="inline-flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300">
+                                    View on GitHub <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text" data-aos="fade-up">Education & Experience</h2>
+                <div class="max-w-3xl mx-auto relative timeline pl-8" data-aos="fade-up">
+                    <!-- Item 1: B.Tech -->
+                     <div class="relative mb-12 timeline-item" data-aos="fade-up">
+                        <div class="timeline-item-dot"><i data-lucide="graduation-cap" class="w-4 h-4 text-black"></i></div>
+                        <div class="glass-card p-6 rounded-xl glow-border">
+                            <p class="text-sm text-gray-400">2022 - 2026</p>
+                            <h3 class="text-xl font-bold text-blue-400 mt-1">B.Tech, Information Technology</h3>
+                            <p class="text-gray-300">Vidya Jyothi Institute of Technology</p>
+                            <p class="text-sm mt-2 text-purple-400 font-semibold">CGPA: 9.33 / 10.0</p>
+                        </div>
+                    </div>
+                    <!-- Item 2: Intermediate -->
+                    <div class="relative mb-12 timeline-item" data-aos="fade-up">
+                        <div class="timeline-item-dot"><i data-lucide="graduation-cap" class="w-4 h-4 text-black"></i></div>
+                        <div class="glass-card p-6 rounded-xl glow-border">
+                            <p class="text-sm text-gray-400">2020 - 2022</p>
+                            <h3 class="text-xl font-bold text-blue-400 mt-1">Class 12th (Intermediate)</h3>
+                            <p class="text-gray-300">Sri Chaitanya Junior College</p>
+                            <p class="text-sm mt-2 text-purple-400 font-semibold">Percentage: 97.2%</p>
+                        </div>
+                    </div>
+                    <!-- Item 3: Schooling -->
+                    <div class="relative mb-12 timeline-item" data-aos="fade-up">
+                        <div class="timeline-item-dot"><i data-lucide="graduation-cap" class="w-4 h-4 text-black"></i></div>
+                        <div class="glass-card p-6 rounded-xl glow-border">
+                            <p class="text-sm text-gray-400">2020</p>
+                            <h3 class="text-xl font-bold text-blue-400 mt-1">Class 10th (SSC)</h3>
+                            <p class="text-gray-300">Bhashyam High School</p>
+                            <p class="text-sm mt-2 text-purple-400 font-semibold">CGPA: 10.0 / 10.0</p>
+                        </div>
+                    </div>
+                     <!-- Item 4: PWC -->
+                    <div class="relative mb-12 timeline-item" data-aos="fade-up">
+                        <div class="timeline-item-dot"><i data-lucide="briefcase" class="w-4 h-4 text-black"></i></div>
+                        <div class="glass-card p-6 rounded-xl glow-border">
+                            <p class="text-sm text-gray-400">Jan 2025 - July 2025</p>
+                            <h3 class="text-xl font-bold text-blue-400 mt-1">Managed Services Launchpad Trainee</h3>
+                            <p class="text-gray-300">PWC</p>
+                            <p class="text-sm mt-2 text-gray-400">Gained a foundation in IT infrastructure, cloud principles, and automation.</p>
+                        </div>
+                    </div>
+                    <!-- Item 5: Salesforce -->
+                    <div class="relative timeline-item" data-aos="fade-up">
+                        <div class="timeline-item-dot"><i data-lucide="briefcase" class="w-4 h-4 text-black"></i></div>
+                        <div class="glass-card p-6 rounded-xl glow-border">
+                            <p class="text-sm text-gray-400">May 2025 - July 2025</p>
+                            <h3 class="text-xl font-bold text-blue-400 mt-1">Salesforce Developer Intern</h3>
+                            <p class="text-gray-300">Smartbridge</p>
+                             <p class="text-sm mt-2 text-gray-400">Mastered Salesforce fundamentals to automate business workflows and customize UIs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UPDATED Contact Section -->
+        <section id="contact" class="py-20">
+             <div class="container mx-auto px-4">
+                <div class="max-w-5xl mx-auto" data-aos="fade-up">
+                    <h2 class="text-3xl font-bold mb-12 text-center gradient-text">Get In Touch</h2>
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <!-- Left Column: Contact Info -->
+                        <div data-aos="fade-right">
+                            <h3 class="text-xl font-semibold mb-6 text-blue-400">Contact Information</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-center group">
+                                    <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mr-4 group-hover:bg-blue-500/20 transition-colors border border-blue-500/20">
+                                        <i data-lucide="mail" class="h-6 w-6 text-blue-400"></i>
+                                    </div>
+                                    <a href="mailto:manojkokkonda@gmail.com" class="text-gray-300 hover:text-blue-400 transition-colors font-medium">manojkokkonda@gmail.com</a>
+                                </div>
+                                <div class="flex items-center group">
+                                    <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mr-4 group-hover:bg-blue-500/20 transition-colors border border-blue-500/20">
+                                        <i data-lucide="phone" class="h-6 w-6 text-blue-400"></i>
+                                    </div>
+                                    <a href="tel:+918885422744" class="text-gray-300 hover:text-blue-400 transition-colors font-medium">+91 8885422744</a>
+                                </div>
+                                <div class="flex items-center group">
+                                    <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mr-4 group-hover:bg-blue-500/20 transition-colors border border-blue-500/20">
+                                        <i data-lucide="map-pin" class="h-6 w-6 text-blue-400"></i>
+                                    </div>
+                                    <span class="text-gray-300 font-medium">Hyderabad, India</span>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold mt-12 mb-6 text-blue-400">Connect With Me</h3>
+                            <div class="flex space-x-4">
+                                <a href="https://linkedin.com/in/manoj-vjit" target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-blue-400 p-0.5 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/70 transition-all social-icon-link">
+                                    <div class="w-full h-full rounded-full bg-black/80 flex items-center justify-center">
+                                        <i data-lucide="linkedin" class="h-6 w-6 text-blue-400"></i>
+                                    </div>
+                                    <span class="text-xs font-medium text-blue-400">LinkedIn</span>
+                                </a>
+                                <a href="https://github.com/Manoj123098" target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-purple-400 p-0.5 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/70 transition-all social-icon-link">
+                                    <div class="w-full h-full rounded-full bg-black/80 flex items-center justify-center">
+                                        <i data-lucide="github" class="h-6 w-6 text-purple-400"></i>
+                                    </div>
+                                    <span class="text-xs font-medium text-purple-400">GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Right Column: Contact Form -->
+                        <div class="glass-card p-8 rounded-2xl glow-border" data-aos="fade-left">
+                            <div id="contact-form-container">
+                                <h3 class="text-xl font-semibold mb-6 text-blue-400">Send Me a Message</h3>
+                                <form id="contact-form" class="space-y-6">
+                                    <!-- 
+                                        ↓↓↓ IMPORTANT! ↓↓↓
+                                        PASTE THE ACCESS KEY YOU GOT FROM WEB3FORMS HERE 
+                                    -->
+                                    <input type="hidden" name="access_key" value="REPLACE_WITH_YOUR_KEY_FROM_WEB3FORMS">
+                                    <input type="hidden" name="subject" value="New Message from Portfolio Website">
+                                    <input type="hidden" name="from_name" value="Manoj's Portfolio">
+
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium mb-2 text-gray-400">Name</label>
+                                        <input type="text" id="name" name="name" class="w-full bg-black/30 border border-purple-500/30 rounded-lg p-3 text-white placeholder:text-gray-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition" placeholder="Your Name" required>
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium mb-2 text-gray-400">Email</label>
+                                        <input type="email" id="email" name="email" class="w-full bg-black/30 border border-purple-500/30 rounded-lg p-3 text-white placeholder:text-gray-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition" placeholder="Your Email" required>
+                                    </div>
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium mb-2 text-gray-400">Message</label>
+                                        <textarea id="message" name="message" rows="4" class="w-full bg-black/30 border border-purple-500/30 rounded-lg p-3 text-white placeholder:text-gray-500 focus:ring-2 focus:ring-purple-500 focus:outline-none transition" placeholder="Your message..." required></textarea>
+                                    </div>
+                                    <button id="submit-button" type="submit" class="w-full inline-flex items-center justify-center gap-2 text-lg font-medium py-3 px-6 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-full transition-all duration-300">
+                                        <i data-lucide="send" class="w-5 h-5"></i>
+                                        Send Message
+                                    </button>
+                                </form>
+                            </div>
+                            <!-- Success Message UI -->
+                            <div id="success-message" class="hidden text-center">
+                                <div class="w-20 h-20 mx-auto bg-green-500/20 rounded-full flex items-center justify-center border-2 border-green-500/50">
+                                    <i data-lucide="check" class="w-10 h-10 text-green-400"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white mt-6">Message Sent!</h3>
+                                <p class="text-gray-400 mt-2">Thank you for reaching out. I'll get back to you shortly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-6 border-t border-purple-500/20">
+        <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 KOKKONDA MANOJ KUMAR. All rights reserved &reg.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-in-out',
+        });
+
+        lucide.createIcons();
+        
+        // Custom Cursor Logic
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorFollower = document.getElementById('cursor-follower');
+
+        window.addEventListener('mousemove', e => {
+            const { clientX, clientY } = e;
+            
+            // Instantly move the dot
+            if (cursorDot) {
+                cursorDot.style.left = `${clientX}px`;
+                cursorDot.style.top = `${clientY}px`;
+            }
+
+            // The follower will lag behind due to CSS transition
+            if (cursorFollower) {
+                // Adjust translation for the new smaller size (30px / 2 = 15px)
+                cursorFollower.style.transform = `translate(${clientX - 15}px, ${clientY - 15}px)`;
+            }
+        });
+
+        // Hide cursor on mobile
+        window.addEventListener('touchstart', () => {
+             if (cursorDot) cursorDot.style.display = 'none';
+             if (cursorFollower) cursorFollower.style.display = 'none';
+        });
+
+        window.addEventListener('touchend', () => {
+             if (cursorDot) cursorDot.style.display = 'block';
+             if (cursorFollower) cursorFollower.style.display = 'block';
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Contact Form Submission Logic
+        const form = document.getElementById('contact-form');
+        const formContainer = document.getElementById('contact-form-container');
+        const successMessage = document.getElementById('success-message');
+        const submitButton = document.getElementById('submit-button');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const object = {};
+            formData.forEach((value, key) => {
+                object[key] = value;
+            });
+            const json = JSON.stringify(object);
+
+            submitButton.innerHTML = '<span class="animate-spin h-5 w-5 border-b-2 border-white rounded-full"></span> Sending...';
+            submitButton.disabled = true;
+
+            fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    if (response.status == 200) {
+                        formContainer.classList.add('hidden');
+                        successMessage.classList.remove('hidden');
+                    } else {
+                        console.log(response);
+                        alert(`An error occurred: ${jsonResponse.message}`);
+                        submitButton.innerHTML = '<i data-lucide="send" class="w-5 h-5"></i> Send Message';
+                        lucide.createIcons();
+                        submitButton.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("Something went wrong! Please try again.");
+                    submitButton.innerHTML = '<i data-lucide="send" class="w-5 h-5"></i> Send Message';
+                    lucide.createIcons();
+                    submitButton.disabled = false;
+                });
+        });
+
+    </script>
+</body>
+</html>
+
